@@ -484,6 +484,23 @@ function renderContactForm() {
         </div>
       </div>
 
+      <div class="terms-field">
+  <label class="terms-checkbox">
+    <input
+      id="terms"
+      name="terms"
+      type="checkbox"
+      required
+    >
+   <span>
+  I agree to receive calls and text messages about my application from the
+  <strong>MichiganWorkFromHome.Com</strong> team
+</span>
+  </label>
+
+  <div id="terms-error" class="error" role="alert"></div>
+</div>
+
       <div class="navigation-buttons">
         <button type="button" class="secondary-button" id="previous-button">
           Previous
@@ -511,13 +528,16 @@ function renderContactForm() {
 function validateContactForm(form) {
   let valid = true;
 
-  ["fullName", "email", "phone"].forEach(id => {
-    document.getElementById(`${id}-error`).textContent = "";
-  });
+["fullName", "email", "phone"].forEach(id => {
+  document.getElementById(`${id}-error`).textContent = "";
+});
 
-  const fullName = form.fullName.value.trim();
-  const email = form.email.value.trim();
-  const phone = form.phone.value.trim();
+document.getElementById("terms-error").textContent = "";
+
+const fullName = form.fullName.value.trim();
+const email = form.email.value.trim();
+const phone = form.phone.value.trim();
+const termsAccepted = form.terms.checked;
 
   if (!fullName) {
     document.getElementById("fullName-error").textContent =
@@ -537,6 +557,12 @@ function validateContactForm(form) {
     valid = false;
   }
 
+  if (!termsAccepted) {
+  document.getElementById("terms-error").textContent =
+    "Please agree to receive calls and text messages before submitting.";
+  valid = false;
+}
+
   return valid;
 }
 
@@ -555,7 +581,8 @@ async function handleSubmit(event) {
       fullName: form.fullName.value.trim(),
       email: form.email.value.trim(),
       phone: form.phone.value.trim(),
-      others: form.others.value.trim()
+      others: form.others.value.trim(),
+      termsAccepted: form.terms.checked
     }
   };
 
@@ -621,17 +648,34 @@ function renderSubmissionSuccess() {
       <h2>Thank you for your submission.</h2>
       ${providerSection}
     </div>
+<div class="knowledge-link-card">
+  <p class="knowledge-link-text">
+    Interested in learning more about the Michigan Medicaid Home Help Program?
+  </p>
 
-    <div class="knowledge-link-card">
-      <p class="knowledge-link-text">
-        Interested in learning more about the Michigan Medicaid Home Help Program?
-      </p>
+  <div class="success-actions">
 
-      <a class="knowledge-link-button" href="knowledge.html">
-        Click here to learn more
-      </a>
-    </div>
+    <a class="knowledge-link-button" href="knowledge.html">
+      Click here to learn more
+    </a>
+
+    <button
+      type="button"
+      class="home-button success-home-button"
+      id="success-home-button"
+    >
+      Return to Home
+    </button>
+
+  </div>
+</div>
   `;
+
+  document.getElementById("success-home-button")
+  .addEventListener("click", () => {
+    renderStart();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
   bindHomeLinks();
 }

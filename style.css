@@ -775,6 +775,39 @@ video {
   font-weight: 600;
 }
 
+/* =========================================
+   SMS / CALL CONSENT
+========================================= */
+
+.terms-field {
+  margin-top: 16px;
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: flex-start;
+
+  gap: 10px;
+
+  cursor: pointer;
+
+  font-size: .9rem;
+  line-height: 1.45;
+}
+
+.terms-checkbox input {
+  width: 18px;
+  height: 18px;
+
+  flex: 0 0 18px;
+
+  margin: 2px 0 0;
+
+  cursor: pointer;
+
+  accent-color: var(--accent);
+}
+
 
 /* =========================================
    RESULTS
@@ -834,7 +867,7 @@ video {
 .knowledge-link-card {
   margin-top: 22px;
 
-  padding: clamp(22px,5vw,32px);
+  padding: clamp(22px, 5vw, 32px);
 
   border: 1px solid var(--border);
   border-radius: 14px;
@@ -851,43 +884,105 @@ video {
 
   margin: 0 auto 20px;
 
-  font-size: clamp(1.25rem,4.5vw,1.65rem);
+  font-size: clamp(1.25rem, 4.5vw, 1.65rem);
 
   line-height: 1.35;
 
   font-weight: 750;
 }
 
-.knowledge-link-button {
+
+/* =========================================
+   SUCCESS ACTION BUTTONS
+========================================= */
+
+.success-actions {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+  margin-top: 20px;
+}
+
+.success-actions .knowledge-link-button {
+  width: 280px;
+  max-width: 100%;
+  min-height: 50px;
+}
+
+.success-actions .home-button {
+  width: 200px;
+  max-width: 100%;
+  min-height: 50px;
+}
+
+
+/* =========================================
+   LEARN MORE BUTTON
+========================================= */
+
+.success-actions .knowledge-link-button {
   display: inline-flex;
 
   align-items: center;
   justify-content: center;
 
-  width: min(100%,330px);
-  max-width: 100%;
-
-  min-height: 50px;
-
   padding: 12px 22px;
 
-  border: 2px solid var(--accent);
+  border: 2px solid var(--accent-dark);
   border-radius: 9px;
 
-  background: var(--accent);
+  background: var(--accent-dark);
   color: #fff;
 
   font-size: 1rem;
   font-weight: 800;
 
+  line-height: 1.2;
+  text-align: center;
+
   text-decoration: none;
 
-  white-space: normal;
+  white-space: nowrap;
 }
 
-.knowledge-link-button:hover {
-  background: var(--accent-dark);
-  border-color: var(--accent-dark);
+.success-actions .knowledge-link-button:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 620px) {
+  .success-actions .home-button,
+  .success-actions .knowledge-link-button {
+    width: min(280px, 100%);
+  }
+}
+
+
+/* =========================================
+   MOBILE SUCCESS ACTIONS
+========================================= */
+
+@media (max-width: 620px) {
+  .success-actions {
+    flex-direction: column;
+  }
+
+  .success-actions .secondary-button,
+  .success-actions .knowledge-link-button {
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 
