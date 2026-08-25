@@ -655,7 +655,7 @@ function renderSubmissionSuccess() {
 
   <div class="success-actions">
 
-    <a class="knowledge-link-button" href="knowledge.html">
+    <a class="knowledge-link-button" href="knowledge/">
       Click here to learn more
     </a>
 
