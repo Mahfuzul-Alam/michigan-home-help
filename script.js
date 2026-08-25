@@ -287,7 +287,7 @@ state.submitted = false;
       </button>
     </div>
   `;
-
+  
   document.querySelectorAll("[data-path]").forEach(button => {
     button.addEventListener("click", () => {
       state.path = button.dataset.path;
@@ -644,7 +644,7 @@ function renderSubmissionSuccess() {
       `;
 
   app.innerHTML = `
-    <div class="result success">
+    <div class="result success" id="success-message">
       <h2>Thank you for your submission.</h2>
       ${providerSection}
     </div>
@@ -670,6 +670,11 @@ function renderSubmissionSuccess() {
   </div>
 </div>
   `;
+
+document.getElementById("success-message")?.scrollIntoView({
+  behavior: "auto",
+  block: "start"
+});
 
   document.getElementById("success-home-button")
   .addEventListener("click", () => {

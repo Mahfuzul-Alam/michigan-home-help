@@ -830,6 +830,11 @@ video {
   background: var(--success-bg);
 }
 
+/* Keep the success message visible below the sticky header */
+#success-message {
+  scroll-margin-top: 90px;
+}
+
 .result h2 {
   margin: 0 0 9px;
 }
